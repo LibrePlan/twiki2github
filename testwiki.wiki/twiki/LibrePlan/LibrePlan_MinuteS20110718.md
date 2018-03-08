@@ -1,0 +1,97 @@
+[TWiki](Main_WebHome)&gt;![](/twiki/pub/TWiki/TWikiDocGraphics/web-bg-small.gif) [LibrePlan Web](LibrePlan_WebHome)&gt;[Meetings](LibrePlan_Meetings)&gt;[MinuteS20110718](LibrePlan_MinuteS20110718 "Topic revision: 2 (20 Aug 2012 - 09:52:56)") (20 Aug 2012, [ManuelRego](Main_ManuelRego))[Edit](LibrePlan_MinuteS20110718?t=1520343713 "Edit this topic text")[Attach](/twiki/bin/attach/LibrePlan/MinuteS20110718 "Attach an image or document to this topic")  
+
+ LibrePlan Meeting 2011/07/18
+=============================
+
+-   Date: [July 18, 2011 at 12:00 CEST (GMT +2)](http://www.timeanddate.com/worldclock/fixedtime.html?day=18&month=7&year=2011&hour=12&min=0&sec=0&p1=48)
+-   Agenda: Coordination meeting
+-   Log: `navalplan-coordination-meeting-20110718.txt`
+
+ Minutes
+--------
+
+-   First of all, Pablo Cigoña was introduced to the community. An Igalia intern that is going to be working in functional tests for [LibrePlan](LibrePlan_LibrePlan) with Sahi.
+
+&nbsp;
+
+-   Rego
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Patch review (helped Nacho and Cristina with their tasks with some small patches)
+        -   LDAP branch finally merged to master
+        -   Reuse JavaScript code to show/hide default password warnings in new page *Change Password*
+        -   Helped in web services providing common method to return 404 HTTP status code if InstanceNotFound happens
+        -   Implemented BaseCRUDController and adapted some controllers to it: labels, machines, exception days
+        -   Defined IHumanIdentifiable interface
+        -   Fixed critical bug \#1108 with Óscar's help. This bug is about a wrong mapping between Orders and Labels causing concurrency problems.
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Release [LibrePlan](LibrePlan_LibrePlan) 1.1.2
+        -   Patch review and general bugfixing
+
+&nbsp;
+
+-   Javichan
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Carry on testing [Sahi](http://sahi.co.in/w/) for functional testing with good results
+        -   Replying users questions in mailing list
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Ayalize more features for 1.2 release
+        -   Starting to prepare contents for new website
+
+&nbsp;
+
+-   Javichan introduced two points to discuss about
+    -   Labels filtering issue:
+        -   Rego thinks that we should fix it for next major release
+    -   Duplicated names of tasks in Gantt and WBS
+        -   Rego thinks that we should have just one name for tasks in Gantt and WBS
+        -   Debate about the problem to save TaskElement and OrderElement from Gantt if we want to keep name just in OrderElement
+        -   Óscar will take a look to the issue as part of his task of share state between perspective. Maybe saving everything is not a problem after his task
+        -   Discussion will be moved to mailing list if needed
+
+&nbsp;
+
+-   Nacho
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   LDAP Integration: Finished and already merged in master. We have now a quite flexible approach for role matching that seems to work in different LDAP configurations.
+        -   Web Services: Implemented the method getEntity for all integration entities. You can get just one entity passing the code as an extra GET parameter
+        -   Locale settings for user: Patch ready and pending revision
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Start to review issue with labels filtering
+        -   Maybe work in other planned task (support minutes in work reports) or review any assigned bug
+
+&nbsp;
+
+-   Cristina
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Closed last issues in Settings menu entry
+        -   Fixed 2 bugs (these bugs are going to be part of LibrePlan 1.1.2 release):
+            -   Bug \#1101: Option to delete a user pending in the interface of user list
+            -   Bug \#1104: Allow remove profile if it's only used in order authorizations
+        -   Changed method `BaseCRUDController::delete` in order to throws a InstanceNotFoundException and manage it properly in `confirmDelete`
+        -   Changed the entities: ExternalCompany, Worker, QualityForm, CostCategory, User and Profile to implement IHumanIdentifiable
+        -   Updated controllers to BaseCRUDController
+        -   Worker, Scenario and BaseCalendar are pending because of they are more complicated. Rego will take a look to them
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Finish the work with BaseCRUDController and IHumanIdentifiable
+        -   Review some bugs if assigned
+
+&nbsp;
+
+-   Susana
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Worked in calendar edition changes. Some problems with new ZK version due to changes in the layout.
+        -   Changed the way to fix earned value chart issue, but patches still pending to be reviewed and pushed
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Fix last issues with calendars interface
+        -   Improve bandbox search component ([ItEr75S09ImproveBandboxFinders](LibrePlan_ItEr75S09ImproveBandboxFinders))
+        -   General bugfixing
+        -   Maybe she stops to work for some weeks in LibrePlan
+
+&nbsp;
+
+-   Óscar
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Fixed issues with Maven 3 and Eclipse Indigo
+        -   Worked in state integration part. Not patches pushed yet
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Keep working in the state integration part and try to finish it during next weeks

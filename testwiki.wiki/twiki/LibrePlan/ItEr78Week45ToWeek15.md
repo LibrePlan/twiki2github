@@ -1,0 +1,15 @@
+[TWiki](Main_WebHome)&gt;![](/twiki/pub/TWiki/TWikiDocGraphics/web-bg-small.gif) [LibrePlan Web](LibrePlan_WebHome)&gt;[ItEr78Week45ToWeek15](LibrePlan_ItEr78Week45ToWeek15 "Topic revision: 1 (09 Apr 2015 - 13:37:08)") (09 Apr 2015, [JeroenBaten](Main_JeroenBaten))[Edit](LibrePlan_ItEr78Week45ToWeek15?t=1520343709 "Edit this topic text")[Attach](/twiki/bin/attach/LibrePlan/ItEr78Week45ToWeek15 "Attach an image or document to this topic")  
+
+ [ItEr78Week45ToWeek15](LibrePlan_ItEr78Week45ToWeek15)
+=======================================================
+
+|         |                                  |
+|---------|----------------------------------|
+| Project | [LibrePlan](LibrePlan_LibrePlan) |
+
+###  Members
+
+###  All iterations for team [ItEr78Week45ToWeek15](LibrePlan_ItEr78Week45ToWeek15)
+
+| [Iter](LibrePlan_ItEr78Week45ToWeek15?sortcol=0;table=2;up=0#sorted_table "Sort by this column") | [Summary](LibrePlan_ItEr78Week45ToWeek15?sortcol=1;table=2;up=0#sorted_table "Sort by this column") | [Start](LibrePlan_ItEr78Week45ToWeek15?sortcol=2;table=2;up=0#sorted_table "Sort by this column") | [End](LibrePlan_ItEr78Week45ToWeek15?sortcol=3;table=2;up=0#sorted_table "Sort by this column") | [Stories](LibrePlan_ItEr78Week45ToWeek15?sortcol=4;table=2;up=0#sorted_table "Sort by this column") | [Est](LibrePlan_ItEr78Week45ToWeek15?sortcol=5;table=2;up=0#sorted_table "Sort by this column") | [Spent](LibrePlan_ItEr78Week45ToWeek15?sortcol=6;table=2;up=0#sorted_table "Sort by this column") | [ToDo](LibrePlan_ItEr78Week45ToWeek15?sortcol=7;table=2;up=0#sorted_table "Sort by this column") | [Progress](LibrePlan_ItEr78Week45ToWeek15?sortcol=8;table=2;up=0#sorted_table "Sort by this column") | [Done](LibrePlan_ItEr78Week45ToWeek15?sortcol=9;table=2;up=0#sorted_table "Sort by this column") | [Overrun](LibrePlan_ItEr78Week45ToWeek15?sortcol=10;table=2;up=0#sorted_table "Sort by this column") |
+|--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|

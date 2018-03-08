@@ -1,0 +1,77 @@
+[TWiki](Main_WebHome)&gt;![](/twiki/pub/TWiki/TWikiDocGraphics/web-bg-small.gif) [LibrePlan Web](LibrePlan_WebHome)&gt;[Meetings](LibrePlan_Meetings)&gt;[MinuteS20110816](LibrePlan_MinuteS20110816 "Topic revision: 4 (20 Aug 2012 - 09:52:57)") (20 Aug 2012, [ManuelRego](Main_ManuelRego))[Edit](LibrePlan_MinuteS20110816?t=1520343714 "Edit this topic text")[Attach](/twiki/bin/attach/LibrePlan/MinuteS20110816 "Attach an image or document to this topic")  
+
+ LibrePlan Meeting 2011/08/16
+=============================
+
+-   Date: [August 16, 2011 at 12:00 CEST (GMT +2)](http://www.timeanddate.com/worldclock/fixedtime.html?day=16&month=8&year=2011&hour=12&min=0&sec=0&p1=48)
+-   Agenda: Coordination meeting
+-   Log: `navalplan-coordination-meeting-20110816.txt`
+
+ Minutes
+--------
+
+-   Today there are less attendants because there are several people on holidays. Attendants are: Javier Moran (javichan), Oscar Gonzalez (ogonzalez), Lorenzo Tilve (ltilve), Pablo Fernandez (pablofcn), Ignacio Diaz (idiazt)
+
+&nbsp;
+
+-   **Ignacio Diaz**
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Filters for Gantt with new labels behavior: With inheritance and without it.
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Introduce new filter format in Company View.
+        -   Solve probable bug unfolding a container with labels in Gantt view: needed to click twice.
+        -   Change of unit in WorkReportLine to be EffortDuration. This task is being harder and longer that foreseen at first.
+-   **Lorenzo Tilve**
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Fixed less difficult issues related to the migration to zk5. Most of them layout issues.
+        -   Fixed dependency arrows.
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Gantt width recalculations.
+        -   Printing
+        -   Migrate properly the zk dependencies in limiting resources.
+        -   Have a look to close the filter pop-up in Gantt view.
+    -   It is introduced that in next meeting we will have to decide what to do in the 1.2 release related to the master detail component. Options:
+        -   Use the ZOL license for this version.
+        -   Delay the release until we replace the master detail in all application by a solution with components of the CE (Community Edition).
+-   **Oscar Gonzalez**
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Refactored `ResourceLoadController` (solved problem with query related to scenarios).
+        -   Solved several bugs important for the release 1.1.3
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Keep working in the sharing state task.
+        -   Collaborate in the *fixing allocating task*
+        -   Review some pacth during this week.
+-   **Pablo Fernandez**
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Tests about data types in LibrePlan finished.
+        -   `README` file and script to launch the tests from command line.
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Continue Sahi tests.
+-   **Javier Moran Rua**
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Analysis topics:
+            -   Fix allocation model.
+            -   Queries accent insensitive.
+        -   LibrePlan web contents.
+        -   Testing and release 1.1.3
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Help contents.
+        -   Coordination.
+        -   LibrePlan web contents.
+-   **Manuel Rego**
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Some bugs fixed: \#1113, \#1129, \#1111, \#1107, \#1130, \#1121, \#1132, \#1126, \#1134
+        -   I'd like to highlihg 2 of them:
+            -   Bug \#1132: Fixed colors for exception days in calendars. Based in a discussion at ZK forum: <http://www.zkoss.org/forum/listComment/17068-Highlight-calendar-days-with-jQuery> \* Bug \#1126: Fixed issue in Chromium with onBlur event. Based in a workaround suggested in this ZK bug: <http://tracker.zkoss.org/browse/ZK-276>
+    -   ConstraintChecker does NOT return boolean now. `ConstraintChecker` throws a `WrongValueException` that is caught by ZK and execution is stopped. This is why return boolean is not needed.
+    -   Updated Spanish and Galician translations
+    -   Released LibrePlan 1.1.3.
+    -   Updated development documentation to new class BaseCRUDController.
+    -   General patch review.
+-   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+    -   1 week of holidays
+    -   week 35 try to start with fix advanced allocation and carry on with patch review
+-   **Ignacio Barrientos**
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Done several stress tests with **JMeter** to know the performance of Jetty and Tomcat.
+        -   Fixed bug in **JMeter** which avoided to log in in the application.

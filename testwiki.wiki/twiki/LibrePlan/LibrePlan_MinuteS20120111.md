@@ -1,0 +1,156 @@
+[TWiki](Main_WebHome)&gt;![](/twiki/pub/TWiki/TWikiDocGraphics/web-bg-small.gif) [LibrePlan Web](LibrePlan_WebHome)&gt;[Meetings](LibrePlan_Meetings)&gt;[MinuteS20120111](LibrePlan_MinuteS20120111 "Topic revision: 1 (13 Jan 2012 - 09:05:38)") (13 Jan 2012, [ManuelRego](Main_ManuelRego))[Edit](LibrePlan_MinuteS20120111?t=1520343717 "Edit this topic text")[Attach](/twiki/bin/attach/LibrePlan/MinuteS20120111 "Attach an image or document to this topic")  
+
+ LibrePlan Meeting 2012/01/11
+=============================
+
+-   Date: [January 11, 2012 at 16:30 CET (GMT +1)](http://www.timeanddate.com/worldclock/fixedtime.html?day=11&month=01&year=2012&hour=16&min=30&sec=0&p1=48)
+-   Agenda: Discuss and update RoadMap for next major version. Previous debate on mailing list: <https://sourceforge.net/mailarchive/forum.php?thread_name=4EF2D9CB.30002%40igalia.com&forum_name=libreplan-devel>
+-   Log: `libreplan-roadmap-meeting-20120111.txt`
+
+ Minutes
+--------
+
+-   First we used some time to review the proposal in the mailing list: <http://sourceforge.net/mailarchive/forum.php?thread_name=1326288125.2295.39.camel%40orion&forum_name=libreplan-devel>
+-   Then we debated about the release date for LibrePlan 1.3 and the length of our release cycles.
+    -   Finally we agree on propose **week 14** as release date for LibrePlan 1.3.
+    -   Try to keep the cycle of **3 months** per release in the future: doing less ambitious releases but having more major versions per year (up to 4 major versions per year).
+-   Then we started to **review the list of tasks** proposed in the mailing list and **rate them** according to 2 factors: priority and effort following the following punctuation system:
+
+        PRIORITY:
+          1 - top priority
+          2 - med priority
+          3 - low priority (but ok for 1.3)
+          4 - not necessary for 1.3
+          5 - not interesting
+
+        EFFORT:
+          1 - simple
+          2 - med
+          3 - hard
+
+    You can check the results here and the discussion summary in the ones that we debate more:
+
+    -   1.1.- Show the load of the resources to be assigned in allocation pop-up - **P2E2**
+        -   There's alternatives to see this info, but this way will be much more comfortable
+    -   1.2.- Right mouse menu register in the left menu of the project planning perspective - **P2E2**
+        -   Several users have had problems with that in the past
+        -   We should register also double click in left menu
+    -   1.3.- Flaw when changing start/end date of project, or when changing the START\_NOT\_SOONER\_THAN constraint from WBS. - **P2E2**
+    -   1.4.- Establishing dependencies from pop-up (form based interface) - **P3E2**
+        -   It'll reduce time while planing specially in big Gantts
+    -   1.5.- Dependencies with lag - **P3E2**
+        -   If previous feature is implemented with a form interface, this could be a new field in that form
+    -   1.6.- WBS setting up behavior - **P1E1**
+        -   This was causing issues to users since the beginning of the project
+    -   1.7.- Allow to introduce minutes in WBS screen - **P2E1**
+    -   1.8.- Templates with planning information - **P3E3**
+        -   This is really interesting for users, but quite time consuming thinking on effort
+    -   1.9.- Labels with colors - **P3E1**
+    -   1.10.- KPIs per project - **P2E2**
+        -   This one is already WIP due to an internal project of Igalia. So this will be done by Igalia for sure before release 1.3 and will be included in the core if the community agrees
+    -   1.11.- Fixing and improving Monte Carlo simulation - **P3E2**
+    -   1.12.- Improve allocation strategy calculate number of hours and calculate resources per day - **P2E1**
+    -   1.13.- Filtering resource load by criteria satisfied by resources - **P1E1**
+        -   Interesting for users and should be easy to implement
+    -   1.14.- Vertical line to show with the start of the project - **P2E1**
+        -   Without it you don't know why tasks can't be moved to the past
+    -   1.15.- Fix consolidation model - **P3E2**
+    -   1.16.- Complete the configuration unit mechanism for machines - **P3E3**
+    -   1.17 .- Bind users to resources - **P1E2**
+        -   Almost everybody interested in LibrePlan asks about this feature
+    -   1.18 .- Refactor entity model for templates - **P2E2**
+    -   1.19 .- Allow to reassign just one task - **P3E1**
+        -   This feature could evolve to flagging the tasks needed for reassignment
+    -   1.20 .- Allow to modify task start and end dates in advanced allocation - **P3E3**
+    -   1.21 .- Limiting resources enforced - **P4E3**
+        -   People is not using this feature
+    -   1.22.- Disable scenarios - **P1E1**
+        -   Scenarios module is in an experimental state so this task just means disable it from the UI
+    -   1.23.- Printing - **P3E2**
+    -   1.24.- New load chart scheme to view and analyze the load - **P4E3**
+    -   1.25.- Visualization of task states in Gantt - **P4E1**
+        -   Task states should be visible in all places and not only Gantt
+    -   1.26.- Improve allocation model - **P3E4**
+    -   2.- Subcontracting module - **P2E2**
+        -   Susana is already working on it due to a project with a client, so this is WIP and will be included in 1.3 if community agrees.
+    -   3.1.- Permissions enhancement - **P1E2**
+        -   We should review the current permissions and improve lots of things
+        -   We have to analyze the feature and how complete this could be. This could go from review the permissions in the top level menu and add some basic new permissions if needed to have permissions for each specific operations in LibrePlan
+        -   Even in the future could evolve to have reviewers accepting the changes done by common users
+    -   4.1.- Include the management and support of a currency to apply to the project - **P1E1**
+        -   This task is about change the symbol showed in LibrePlan from € to a configured value. It's not about having a project with 2 currencies
+    -   5.1.- Icons - **P2E1**
+    -   5.2.- Upper menu revamp - **P2E2**
+        -   Top menu sometimes is confused with tabs and people doesn't know that it's a menu
+        -   Moreover we should review the different entries, some names and where some of them are placed
+    -   5.3.- Menu breadcrumbs - **P3E1**
+        -   Some people thinks that breadcrumbs are not needed (moreover they're not working properly)
+        -   We're using that place to show project name while you're editing it (we should find a new place that could be already thought together with the previous task)
+    -   5.4.- User experience improvements - **P2E1**
+        -   This point is not properly defined, so we should identify some enhancements to do regarding user experience
+    -   5.5.- Improve error detection at perspective changes - **P3E2**
+    -   5.6.- Protect the upper menu from abandoning the planning of a project without saving - **P2E1**
+        -   Users have still problems and lose information sometimes
+    -   5.7.- Improve help and documentation - **P1E3**
+        -   This is really important, but require quite a lot of effort
+        -   We could create a a very simple cheatsheet inside the application
+    -   5.8.- Warning about new versions - **P1E1**
+        -   Some people already asked about that
+        -   Moreover it will let us know how many people is using the app
+        -   It's WIP somehow as Rego has been doing some tests about that
+    -   5.9.- Default viewing information for Gantt projects - **P3E1**
+        -   Maybe we can change the current way of having everything disabled and then show it. To the other way around, having everything visible and user has the option to hide what he doesn't want to see in each moment.
+    -   6.1.- Save and back button created just in one place - **P4E2**
+    -   6.2.- Performance enhancements - **P4E3**
+        -   Quite ambiguous as it's not properly defined
+
+-   Apart from the tasks in that mail we also **reviewed some tasks proposed by CafédeRed** in the mailing list: <http://sourceforge.net/mailarchive/forum.php?thread_name=4F0C081F.9050106%40igalia.com&forum_name=libreplan-devel>
+    -   7.1.- Android app
+        -   CafédeRed has some experience in Android, so they are going to explore the creation of an Android app to report hours using the web services
+        -   Maybe it could be interesting use [PhoneGap](http://phonegap.com/) as it will allow to have the same app for Android an iOS
+        -   A mobile application seems to be something interesting for the project
+        -   CafédeRed will do some tests and propose the final approach at some point
+    -   7.2.- Allow workers to ask for holidays - **P3E3**
+        -   It seems useful, but could depend a lot on the different companies requirements
+        -   There're some concerns regarding the difficult to have a holidays management inside the application
+-   After that we also review 2 tasks from the list of **less priority bag of things**:
+    -   Add export/import operations for different format files from other projects like OpenProj, MicrosoftProject, ... - **P3E2**
+        -   Thre're some Java libraries to manage this kind of files: <http://mpxj.sourceforge.net/>
+        -   We've already done some experiments
+        -   Seems useful to ease the migration from one of these tools to LibrePlan
+    -   Base line in projects - **P3E3**
+        -   For some users, this is a must
+-   Once we finished the rating process we reviewed the **final results**:
+    -   **PRIORITY 1**
+        -   1.6.- WBS setting up behavior - **P1E1**
+        -   1.13.- Filtering resource load by criteria satisfied by resources - **P1E1**
+        -   1.17 .- Bind users to resources - **P1E2**
+        -   1.22.- Disable scenarios - **P1E1**
+        -   3.1.- Permissions enhancement - **P1E2**
+        -   4.1.- Include the management and support of a currency to apply to the project - **P1E1**
+        -   5.7.- Improve help and documentation - **P1E3**
+        -   5.8.- Warning about new versions - **P1E1**
+    -   **PRIORITY 2**
+        -   1.1 .- Show the load of the resources to be assigned in allocation pop-up - **P2E2**
+        -   1.2.- Right mouse menu register in the left menu of the project planning perspective - **P2E2**
+        -   1.3.- Flaw when changing start/end date of project, or when changing the START\_NOT\_SOONER\_THAN constraint from WBS. - **P2E2**
+        -   1.7.- Allow to introduce minutes in WBS screen - **P2E1**
+        -   1.10.- KPIs per project - **P2E2**
+        -   1.12.- Improve allocation strategy calculate number of hours and calculate resources per day - **P2E1**
+        -   1.14.- Vertical line to show with the start of the project - **P2E1**
+        -   1.18 .- Refactor entity model for templates - **P2E2**
+        -   2.- Subcontracting module - **P2E2**
+        -   5.1.- Icons - **P2E1**
+        -   5.2.- Upper menu revamp - **P2E2**
+        -   5.4.- User experiencie improvements - **P2E1**
+    -   **PRIORITY 3** & **EFFORT 1**
+        -   1.9.- Labels with colors - **P3E1**
+        -   1.19 .- Allow to reassign just one task - **P3E1**
+        -   5.3.- Menu breadcrumbs - **P3E1**
+        -   5.9.- Default viewing information for gantt projects - **P3E1**
+-   Then we analyzed the **resources capacity** in the community:
+    -   Igalia will have around 4-5 people working in LibrePlan with a total effort of 2 people full-time
+    -   CafédeRed will have 3 people working in LibrePlan with a total effort around 1 people full-time
+-   Finally, we agreed that Javichan would review the list of selected tasks to **propose final roadmap for LibrePlan 1.3**
+    -   The discussion will carry on in the mailing list: <http://sourceforge.net/mailarchive/forum.php?thread_name=1326387530.10965.8.camel%40orion&forum_name=libreplan-devel>
+    -   Next week the roadmap will be announced

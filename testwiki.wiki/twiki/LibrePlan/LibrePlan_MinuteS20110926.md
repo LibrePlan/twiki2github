@@ -1,0 +1,59 @@
+[TWiki](Main_WebHome)&gt;![](/twiki/pub/TWiki/TWikiDocGraphics/web-bg-small.gif) [LibrePlan Web](LibrePlan_WebHome)&gt;[Meetings](LibrePlan_Meetings)&gt;[MinuteS20110926](LibrePlan_MinuteS20110926 "Topic revision: 2 (20 Aug 2012 - 09:52:57)") (20 Aug 2012, [ManuelRego](Main_ManuelRego))[Edit](LibrePlan_MinuteS20110926?t=1520343715 "Edit this topic text")[Attach](/twiki/bin/attach/LibrePlan/MinuteS20110926 "Attach an image or document to this topic")  
+
+ LibrePlan Meeting 2011/09/26
+=============================
+
+-   Date: [September 26, 2011 at 12:00 CEST (GMT +2)](http://www.timeanddate.com/worldclock/fixedtime.html?day=26&month=9&year=2011&hour=12&min=0&sec=0&p1=48)
+-   Agenda: Coordination meeting
+-   Log: `navalplan-coordination-meeting-20110926.txt`
+
+ Minutes
+--------
+
+-   Rego
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Holidays on week 37
+        -   Fixed bugs: \#1156, \#1180, \#1184
+        -   Worked on [ItEr75S23FixAllocationModel](LibrePlan_ItEr75S23FixAllocationModel) but still some pending things to finish
+        -   Upgraded LibrePlan to ZK 5.0.8 (no issues)
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Finish [ItEr75S23FixAllocationModel](LibrePlan_ItEr75S23FixAllocationModel)
+-   Nacho Díaz
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Fixed bugs: \#1146, \#1147, \#1148, \#1149, \#1154, \#1155, \#1156, \#1176, \#1177, \#1178, \#1179, \#1182
+        -   Used Scriptlet classes in reports to manage EffortDuration elements. There's a bug in Jasper Reports that process every method in scriptles twice, this is fixed with a workaround (a reference `self` in the DTOs)
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Holidays
+-   Pablo
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Functional test: [ItEr75S26SchedulingTests](LibrePlan_ItEr75S26SchedulingTests)
+        -   Once bugs \#1179 and \#1182 gets fixed, he updated `work_report_test.sah` accordingly
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   No more work as he's finished his internship in Igalia
+-   Cristina
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Holidays on week 37
+        -   Fixed bugs: \#1151, \#1158, \#1172 and \#1159
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Carry on fixing more bugs for 1.2 release
+-   Loren
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Worked in the new website
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Carry on with the new website
+        -   Help with some ZK5 issues
+-   Jacobo
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Fixed some issues in limiting resources screen due to migration to ZK5
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Carry on fixing limiting resources screen
+-   Nacho Barrientos
+    -   ![done.gif](/twiki/pub/TWiki/TWikiDocGraphics/done.gif)
+        -   Migration of all services to a new server under \*.libreplan.org
+        -   <http://unstable.libreplan.org/> has a nightly build running, so it's a good point to test the last developments
+    -   ![todo.gif](/twiki/pub/TWiki/TWikiDocGraphics/todo.gif)
+        -   Finish the backup system
+        -   Review the i18n bug already assigned
+-   Óscar was not present, but from his last patches it seems that he has finished the sharing state in WBS screen. Now he'll need to share the state in Montecarlo screen too.
+-   Javichan was not present either, he worked in the website contents, some application testing and reporting bugs. This week he's in Brazil in a commercial mission trying to look for companies interested in LibrePlan.
+-   We had no time to review the issues to migrate to ZKCE, it should be evaluated and discussed in a later meeting
