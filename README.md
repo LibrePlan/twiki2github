@@ -13,6 +13,8 @@ Using Python to extract all current pages from Twiki
 
 # Change page width:
 
+The current github page styling is sub-optimal to say the least. There are options, but we chose not to use them.
+
 https://userstyles.org/styles/108591/github-wide
 
 
