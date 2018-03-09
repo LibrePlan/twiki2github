@@ -1,11 +1,15 @@
 # Converting code for LibrePlan Twiki to GitHub Wiki+markdown
 
-Using Python to extract all current pages from Twiki
+Using Python to extract all current pages from Twiki.
+The program itself contains lots of trial and error code.
+Basically it's crap, but it did get the job done (sort of).
+
+Basic program flow:
 
 1. Call WebTopicList
-1. Loop for every page
-1. (optionally) loop for every history
-1. convert from Twiki to Markdown
+1. Loop for every page found
+1. Change the text
+1. Convert from Twiki to Markdown
 1. Add to local wiki git repo
 
 ## Sources of inspiration
