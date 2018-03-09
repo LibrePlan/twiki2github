@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 from pprint import pprint,pformat
 import pypandoc
 import codecs
+import copy
 
 # URL that lists all pages
 #url = "http://wiki.libreplan.org/bin/view/LibrePlan/WebTopicList"
@@ -25,16 +26,123 @@ export_root_dir="./libreplan.wiki/twiki"
 starts_with="/twiki/bin/view"
 # new url location
 new_url_root="https://github.com/LibrePlan/libreplan/wiki/twiki"
+bugcounter=0
+copyright_notice="<p>\n\nCopyright (c) by the contributing authors. All material on this collaboration platform is the property of the contributing authors.</body></html>"
 
-
-print(pypandoc.get_pandoc_version())
-print(pypandoc.get_pandoc_path())
-print(pypandoc.get_pandoc_formats())
+print("Pandoc version: "+pypandoc.get_pandoc_version())
+#print(pypandoc.get_pandoc_path())
+#print(pypandoc.get_pandoc_formats())
 
 #
 r  = requests.get(url)
 data = r.text
+data2=copy.copy(data)
+
+# Copyright © by the contributing authors. All material on this collaboration platform is the property of the contributing authors.
+mysearch = "<!-- /patternContent-->"
+if mysearch in data2:
+    data2 = data2[0:data2.index(mysearch)]
+#  </body> </html>
+data2 = data2 + copyright_notice
+
+# let's try to shorten urls:
+# data2 = re.sub(r'href="(.*?)/(.*?)/(.*?)(\?(.*) )"',
+#                r'href=\"\2/\3\"',
+#                data2)
+# removing all http://wiki.libreplan-enterprise.com and relocate to the testrepo
+
+# This url works on github: [ItEr61S03RFPerformanceCompanyView](ItEr61S03RFPerformanceCompanyView)
+data2 = data2.replace("http://wiki.libreplan-enterprise.com","")
+if "/twiki/kwoot/" in data2:
+    print 1
+    sys.exit(2)
+# intermediarie change
+data2 = data2.replace("/twiki/bin/edit", "/twiki/bin/view")
+# /twiki/bin/view/
+data2 = data2.replace(r"/twiki/bin/view/LibrePlan/", r"")
+if "/twiki/kwoot/" in data2:
+    print 2
+    sys.exit(2)
+
+
+
 soup = BeautifulSoup(data, "html.parser")
+print type(soup)
+#soup2=copy.copy(soup)
+soup2=BeautifulSoup(data2, "html.parser")
+
+# remove tages and do not keep children
+invalid_tags = ["style","script","head"]
+for tag in invalid_tags:
+    for match in soup.findAll(tag):
+        match.clear()
+        # print "intermediate"+str(len(pformat(soup2))) + ":" + pformat(soup2)
+print str(len(pformat(soup2))) + ":" + pformat(soup2)
+
+# remove tages but keep children
+invalid_tags = ['div','span',"base"]
+for tag in invalid_tags:
+    for match in soup2.findAll(tag):
+        match.replaceWithChildren()
+        # print "intermediate"+str(len(pformat(soup2))) + ":" + pformat(soup2)
+print str(len(pformat(soup2))) + ":" + pformat(soup2)
+
+
+basefilename="libreplan.wiki/twiki/LibrePlan/All_Twiki_Pages"
+filename=basefilename+".pre-pandoc-concersion"
+print "Filename: " + filename
+# Save in libreplan.wiki/twiki
+text_file = codecs.open(filename, "w", "utf-8")
+text_file.write(soup2.prettify())
+text_file.close()
+
+# Convert page to markdown_github syntax
+
+#filters = ['pandoc-citeproc']
+#pdoc_args = ['--mathjax',
+#             '--smart']
+filters=[]
+pdoc_args=["--wrap=none"]
+
+# extensions: simple_tables, multiline_tables, grid_tables, pipe_tables
+# disable extension: raw_html, native_spans
+#extensions = "-raw_html-native_spans+pipe_tables"
+extensions = "-native_spans"
+# pipe_tables geeft hele brede kolommen. Next!
+# simple_tables idem
+
+print "Start pandoc conversion..."
+print str(len(pformat(soup2))) + ":" + pformat(soup2)
+my_output = pypandoc.convert_text(soup2,
+                                  'markdown_github'+extensions,
+                                  format='html',
+                                  extra_args=pdoc_args,
+                                  filters=filters)
+print "*" * 80
+print str(len(pformat(my_output))) + ":" + pformat(my_output)
+pprint(my_output)
+print "*" * 80
+
+# After pandoc conversion save intermediate file
+filename=basefilename + ".raw-md"
+print "Filename: " + filename
+# Save in libreplan.wiki/twiki
+text_file = codecs.open(filename, "w", "utf-8")
+text_file.write(my_output)
+text_file.close()
+
+# File handling part
+filename=basefilename + ".md"
+print "Filename: " + filename
+# Save in libreplan.wiki/twiki
+text_file = codecs.open(filename, "w", "utf-8")
+text_file.write(my_output)
+text_file.close()
+#output = pypandoc.convert_text(soup2, "markdown_github", format='html', outputfile=filename)
+# assert output == ""
+
+
+#sys.exit(1)
 
 counter=0
 for link in soup.find_all('a'):
@@ -102,18 +210,12 @@ for link in soup.find_all('a'):
             #    data2=data2[0:data2.index('span id=\"topic-actions\"')]
             # if 'http://twiki.org/?ref=twiki.org/topmenuskin' in data2:
             #    data2=data2[0:data2.index('http://twiki.org/?ref=twiki.org/topmenuskin')]
-            # soup2 = re.sub(r"\<\!\-\- \/patternContent\-\-\>.*\Z", "", soup2)
-            # data2=data2[0:data2.index('span id=\"topic-actions\"')]
-            # [Edit](http://wiki.libreplan-enterprise.com/twiki/bin/edit/
-            # s/^\[Edit\](http\:\/\/wiki.libreplan-enterprise.com\/twiki\/bin\/edit\/.*$//'
             # Copyright © by the contributing authors. All material on this collaboration platform is the property of the contributing authors.
-            # my_output = re.sub(r"^\[Edit\]\(http\:\/\/wiki.libreplan-enterprise.com\/twiki\/bin\/edit\/.*$", "", my_output)
-            # my_output = re.sub(r"^\[Edit\].*\Z", "", my_output)
             mysearch = "<!-- /patternContent-->"
             if mysearch in data2:
                 data2 = data2[0:data2.index(mysearch)]
             #  </body> </html>
-            data2 = data2 + "</body> </html>"
+            data2 = data2 + copyright_notice
 
             # let's try to shorten urls:
             # data2 = re.sub(r'href="(.*?)/(.*?)/(.*?)(\?(.*) )"',
@@ -133,12 +235,20 @@ for link in soup.find_all('a'):
             if "/twiki/kwoot/" in data2:
                 print 2
                 sys.exit(2)
+
+            # Fix strange Twiki bug:  <th>&nbsp;</td>
+            if "<th>&nbsp;</td>" in data2:
+                data2 = data2.replace("<th>&nbsp;</td>", "<th>&nbsp;</th>")
+                bugcounter+=1
+
             #
             # data2 = data2.replace("/bin/edit", "/kwoot/testwiki/wiki/twiki")
             # data2 = data2.replace(r"/twiki/bin/view/Main/", r"")
             # if "/twiki/kwoot/" in data2:
             #     print 3
             #     sys.exit(2)
+
+            # adding images: [[https://github.com/username/repository/blob/master/img/octocat.png|alt=octocat]]
 
             # Change page using Beautifulsoup
             soup2=BeautifulSoup(data2, "html.parser")
@@ -155,16 +265,16 @@ for link in soup.find_all('a'):
             # text_file.close()
 
             # Remove some attributes
-            # REMOVE_ATTRIBUTES = [
-            #     'lang', 'language', 'onmouseover', 'onmouseout', 'script', 'style', 'font',
-            #     'dir', 'face', 'size', 'color', 'style', 'class', 'width', 'height', 'hspace',
-            #     'border', 'valign', 'align', 'background', 'bgcolor', 'text', 'link', 'vlink',
-            #     'alink', 'cellpadding', 'cellspacing']
-            # for tag in soup2.recursiveChildGenerator():
-            #     if hasattr(tag, 'attrs'):
-            #         tag.attrs = {key:value for key,value in tag.attrs.iteritems()
-            #                      if key not in REMOVE_ATTRIBUTES}
-            # print str(len(pformat(soup2))) + ":" + pformat(soup2)
+            REMOVE_ATTRIBUTES = [
+                'lang', 'language', 'onmouseover', 'onmouseout', 'script', 'style', 'font',
+                'dir', 'face', 'size', 'color', 'style', 'class', 'width', 'height', 'hspace',
+                'border', 'valign', 'align', 'background', 'bgcolor', 'text', 'link', 'vlink',
+                'alink', 'cellpadding', 'cellspacing']
+            for tag in soup2.recursiveChildGenerator():
+                if hasattr(tag, 'attrs'):
+                    tag.attrs = {key:value for key,value in tag.attrs.iteritems()
+                                 if key not in REMOVE_ATTRIBUTES}
+            print str(len(pformat(soup2))) + ":" + pformat(soup2)
 
             # for s in soup2.find_all("span"):
             #     print "==>"
@@ -173,20 +283,20 @@ for link in soup.find_all('a'):
             #     s.replace_with('')
 
             # remove tages and do not keep children
-            # invalid_tags = ["style","script","head"]
-            # for tag in invalid_tags:
-            #     for match in soup2.findAll(tag):
-            #         match.clear()
-            #         # print "intermediate"+str(len(pformat(soup2))) + ":" + pformat(soup2)
-            # print str(len(pformat(soup2))) + ":" + pformat(soup2)
+            invalid_tags = ["style","script","head"]
+            for tag in invalid_tags:
+                for match in soup2.findAll(tag):
+                    match.clear()
+                    # print "intermediate"+str(len(pformat(soup2))) + ":" + pformat(soup2)
+            print str(len(pformat(soup2))) + ":" + pformat(soup2)
 
             # remove tages but keep children
-            # invalid_tags = ['div','span',"base"]
-            # for tag in invalid_tags:
-            #     for match in soup2.findAll(tag):
-            #         match.replaceWithChildren()
-            #         # print "intermediate"+str(len(pformat(soup2))) + ":" + pformat(soup2)
-            # print str(len(pformat(soup2))) + ":" + pformat(soup2)
+            invalid_tags = ['div','span',"base"]
+            for tag in invalid_tags:
+                for match in soup2.findAll(tag):
+                    match.replaceWithChildren()
+                    # print "intermediate"+str(len(pformat(soup2))) + ":" + pformat(soup2)
+            print str(len(pformat(soup2))) + ":" + pformat(soup2)
 
             # Remove stuff on top of page: <a name="PageTop">  </a>
             # for match in soup2.find_all("a",{"name":"PageTop"}):
@@ -249,12 +359,12 @@ for link in soup.find_all('a'):
 
             # save intermediate html for checking purposes
             # File handling part
-            # filename=destination_directory+"/"+link_parts[-1] + ".pre-pandoc-concersion"
-            # print "Filename: " + filename
-            # # Save in libreplan.wiki/twiki
-            # text_file = codecs.open(filename, "w", "utf-8")
-            # text_file.write(soup2.prettify())
-            # text_file.close()
+            filename=destination_directory+"/"+link_parts[-1] + ".pre-pandoc-concersion"
+            print "Filename: " + filename
+            # Save in libreplan.wiki/twiki
+            text_file = codecs.open(filename, "w", "utf-8")
+            text_file.write(soup2.prettify())
+            text_file.close()
 
             # Convert page to markdown_github syntax
 
@@ -266,7 +376,8 @@ for link in soup.find_all('a'):
 
             # extensions: simple_tables, multiline_tables, grid_tables, pipe_tables
             # disable extension: raw_html, native_spans
-            extensions = "-raw_html-native_spans+pipe_tables"
+            #extensions = "-raw_html-native_spans+pipe_tables"
+            extensions = "-native_spans"
             # pipe_tables geeft hele brede kolommen. Next!
             # simple_tables idem
 
@@ -361,5 +472,6 @@ for link in soup.find_all('a'):
             #sys.exit(1)
             pass
 
+print "Bugcounter final value: " + str(bugcounter)
 # Play sound to indicate end of run
 os.system("aplay /usr/share/games/simutrans/pak/sound/boing.wav")
